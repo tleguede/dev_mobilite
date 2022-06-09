@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1109375" />
+        <entry key="app/src/main/res/layout/item_bottom_sheet.xml" value="0.1" />
       </map>
     </option>
   </component>

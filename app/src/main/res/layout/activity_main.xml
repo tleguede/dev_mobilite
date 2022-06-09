@@ -24,7 +24,7 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:hint="Search Location"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:inputType="textPersonName"/>
 
             <Button

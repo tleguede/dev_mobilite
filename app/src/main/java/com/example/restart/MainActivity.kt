@@ -10,7 +10,10 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ListView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.gms.common.ConnectionResult
@@ -25,6 +28,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.io.IOException
 
 
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
     internal var mCurrLocationMarker: Marker? = null
     internal var mGoogleApiClient: GoogleApiClient? = null
     internal lateinit var mLocationRequest: LocationRequest
+    lateinit var dialog: BottomSheetDialog;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +48,34 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.myMap) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        val view: View = layoutInflater.inflate(R.layout.item_bottom_sheet, null);
+        val dialog: BottomSheetDialog = BottomSheetDialog(this)
+        dialog.setContentView(view)
+        dialog.show()
+    }
+
+    private fun showResultList() {
+        val view: View = layoutInflater.inflate(R.layout.item_bottom_sheet, null);
+        val dialog: BottomSheetDialog = BottomSheetDialog(this)
+        dialog.setContentView(view)
+        dialog.show()
+
+
+//        dialog.setOnShowListener {
+//            val list = arrayOf("first", "second");
+//            val listView = findViewById<ListView>(R.id.simple_listview);
+//            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
+//            listView.adapter = adapter
+//            listView.onItemClickListener = object : AdapterView.OnItemClickListener {
+//                override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//                    Toast.makeText(applicationContext, "cliked" + list[position], Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        }
+
+//        dialog.set
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -122,6 +155,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
 
         print("yo")
 
+        dialog.show()
+
         if (location == "") {
             Toast.makeText(this, "Entrez un lieu", Toast.LENGTH_SHORT).show()
         } else {
@@ -144,5 +179,29 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
         }
     }
 
+
+    fun showTwoFever(view: View) {
+        val latLng = LatLng(6.1378, 1.2125)
+        mMap!!.addMarker(MarkerOptions().position(latLng).title("Hotel du 2 Fevrie"))
+        mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+    }
+
+    fun showTwoOmo(view: View) {
+        val latLng = LatLng(	6.1306535, 1.2445182)
+        mMap!!.addMarker(MarkerOptions().position(latLng).title("ONOMO Hotel Lome"))
+        mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+    }
+
+    fun showTwoNapo(view: View) {
+        val latLng = LatLng(	6.137778, 1.212500)
+        mMap!!.addMarker(MarkerOptions().position(latLng).title("Napoleon Lagune"))
+        mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+    }
+
+    fun showTwoGolf(view: View) {
+        val latLng = LatLng(		6.1235172, 1.223553)
+        mMap!!.addMarker(MarkerOptions().position(latLng).title("Hotel du Golfe"))
+        mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+    }
 
 }
