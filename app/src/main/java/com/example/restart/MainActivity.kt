@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
         mapFragment.getMapAsync(this)
 
         val view: View = layoutInflater.inflate(R.layout.item_bottom_sheet, null);
-        val dialog: BottomSheetDialog = BottomSheetDialog(this)
+         dialog = BottomSheetDialog(this)
         dialog.setContentView(view)
         dialog.show()
     }
@@ -184,24 +184,28 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
         val latLng = LatLng(6.1378, 1.2125)
         mMap!!.addMarker(MarkerOptions().position(latLng).title("Hotel du 2 Fevrie"))
         mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+        dialog.hide()
     }
 
     fun showTwoOmo(view: View) {
         val latLng = LatLng(	6.1306535, 1.2445182)
         mMap!!.addMarker(MarkerOptions().position(latLng).title("ONOMO Hotel Lome"))
         mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+        dialog.hide()
     }
 
     fun showTwoNapo(view: View) {
         val latLng = LatLng(	6.137778, 1.212500)
         mMap!!.addMarker(MarkerOptions().position(latLng).title("Napoleon Lagune"))
         mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+        dialog.hide()
     }
 
     fun showTwoGolf(view: View) {
         val latLng = LatLng(		6.1235172, 1.223553)
         mMap!!.addMarker(MarkerOptions().position(latLng).title("Hotel du Golfe"))
         mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+        dialog.hide()
     }
 
 }
